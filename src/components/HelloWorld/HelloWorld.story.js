@@ -5,7 +5,7 @@ import HelloWorld from '.'
 
 Vue.component('hello-world', HelloWorld)
 
-storiesOf('HelloWorld/HelloWorld', module)
+storiesOf('HelloWorld|HelloWorld', module)
   .add('default', () => ({
     template: '<hello-world></hello-world>'
   }))
