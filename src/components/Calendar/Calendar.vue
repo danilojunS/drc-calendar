@@ -3,10 +3,6 @@
     :class="[{
       'calendar': true
     }, className]"
-    :style="{
-      width,
-      height
-    }"
   >
     <div class="controls">
       <div class="previous-month" @click="previousMonth()" v-if="shouldShowPrevious()"></div>
@@ -44,8 +40,6 @@ export default {
     selectMonth: VueTypes.func.isRequired,
     selectedDay: VueTypes.string,
     onDateSelected: VueTypes.func.def(console.log),
-    width: VueTypes.string.def('100%'),
-    height: VueTypes.string.def('100%'),
     events: VueTypes.arrayOf(VueTypes.shape({
       title: VueTypes.string.isRequired,
       startsAt: Date,
@@ -82,11 +76,14 @@ export default {
 </script>
 
 <style scoped>
+.calendar {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
 .controls {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
+  position: relative;
 }
 .previous-month {
   position: absolute;

@@ -3,12 +3,9 @@
     :class="[{
       'agenda': true
     }, className]"
-    :style="{
-      width
-    }"
   >
     <div class="title">
-      {{ year }}
+      Agenda {{ year }}
     </div>
     <div class="days">
       <agenda-date
@@ -37,7 +34,6 @@ export default {
   props: {
     year: VueTypes.string.isRequired,
     onDateSelected: VueTypes.func.def(console.log),
-    width: VueTypes.string.def('100%'),
     events: VueTypes.arrayOf(VueTypes.shape({
       title: VueTypes.string.isRequired,
       startsAt: Date,
@@ -65,15 +61,15 @@ export default {
 </script>
 
 <style scoped>
-.agenda-date {
-  border: 1px solid #e0e0e0;
-  cursor: pointer;
-  display: inline-block;
+.agenda {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
 }
 .title {
   font-size: 50px;
   text-align: right;
-  padding: 20px;
+  padding: 22px;
   color: #42b983;
 }
 </style>
