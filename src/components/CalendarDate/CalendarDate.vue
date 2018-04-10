@@ -47,7 +47,7 @@ export default {
       title: VueTypes.string.isRequired,
       startsAt: Date,
       endsAt: Date,
-    })),
+    })).def([]),
     selected: VueTypes.bool.def(false),
     unfocused: VueTypes.bool.def(false),
     className: VueTypes.string

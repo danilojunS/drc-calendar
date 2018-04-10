@@ -38,7 +38,7 @@ export default {
       title: VueTypes.string.isRequired,
       startsAt: Date,
       endsAt: Date,
-    })),
+    })).def([]),
     className: VueTypes.string
   },
   methods: {
@@ -58,11 +58,18 @@ export default {
   cursor: pointer;
   display: inline-block;
 }
+.agenda-date:hover {
+  border-color: #42b983;
+}
 
 .title {
   background: #e0e0e0;
   font-size: 20px;
   padding: 8px;
+}
+.agenda-date:hover .title {
+  background: #42b983;
+  color: #ffffff;
 }
 
 .events {
