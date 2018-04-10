@@ -5,13 +5,13 @@ describe('generate-week-days.js', () => {
     const weekDays = generateWeekDays()
     expect(weekDays).toHaveLength(7)
     expect(weekDays).toMatchObject([
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday'
+      'Sun',
+      'Mon',
+      'Tue',
+      'Wed',
+      'Thu',
+      'Fri',
+      'Sat'
     ])
   })
 })
