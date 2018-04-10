@@ -1,9 +1,10 @@
 <template>
   <div
-    :class="{
+    :class="[{
       'calendar-date': true,
-      'calendar-date--selected': selected
-    }"
+      'calendar-date--selected': selected,
+      'calendar-date--unfocused': unfocused
+    }, className]"
     :style="{
       width,
       height
@@ -44,7 +45,9 @@ export default {
       startsAt: Date,
       endsAt: Date,
     })),
-    selected: VueTypes.bool.def(false)
+    selected: VueTypes.bool.def(false),
+    unfocused: VueTypes.bool.def(false),
+    className: VueTypes.string
   },
   methods: {
     formatDate (date) {
@@ -61,9 +64,13 @@ export default {
 .calendar-date {
   border: 1px solid #e0e0e0;
   cursor: pointer;
+  display: inline-block;
 }
 .calendar-date--selected {
   border: 1px solid #42b983;
+}
+.calendar-date--unfocused {
+  background: #eee;
 }
 
 .container {

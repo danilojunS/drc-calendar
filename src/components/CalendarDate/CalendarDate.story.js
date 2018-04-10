@@ -109,6 +109,22 @@ storiesOf('Calendar|CalendarDate', module)
       }
     }
   }))
+  .add('unfocused', () => ({
+    template: `
+      <calendar-date
+        :date="date"
+        :onClick="onClick"
+        unfocused
+      >
+      </calendar-date>
+    `,
+    data () {
+      return {
+        date: date7,
+        onClick: action('onClick')
+      }
+    }
+  }))
   .add('events overflow', () => ({
     template: `
       <calendar-date
