@@ -23,3 +23,20 @@ storiesOf('Calendar|CalendarMonth', module)
       }
     }
   }))
+  .add('selected date', () => ({
+    template: `
+      <calendar-month
+        :month="month"
+        :onDateSelected="onDateSelected"
+        :selectedDate="selectedDate"
+      >
+      </calendar-month>
+    `,
+    data () {
+      return {
+        month: '2018-01',
+        selectedDate: '2018-01-09',
+        onDateSelected: action('onDateSelected')
+      }
+    }
+  }))

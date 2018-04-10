@@ -12,7 +12,10 @@
     @click="onClick(date)"
   >
     <div class="container">
-      <div class="day">
+      <div :class="{
+        'day': true,
+        'day--selected': selected
+      }">
         {{ formatDate(date) }}
       </div>
       <div class="events">
@@ -81,12 +84,25 @@ export default {
 
 .day {
   font-size: 1em;
-  padding: 10px;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+.day--selected {
+  color: #ffffff;
+  background: #42b983;
 }
 
 .events {
   position: absolute;
-  top: 40px;
+  top: 50px;
   bottom: 0;
   left: 0;
   right: 0;

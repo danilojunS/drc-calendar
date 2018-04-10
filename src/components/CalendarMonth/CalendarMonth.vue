@@ -17,6 +17,7 @@
         width="calc(100% / 7 - 2px)"
         :date="day.date"
         :unfocused="day.unfocused"
+        :selected="day.selected"
         :onClick="onDateSelected"
       />
     </div>
@@ -39,6 +40,7 @@ export default {
   name: 'CalendarDate',
   props: {
     month: VueTypes.string.isRequired,
+    selectedDate: VueTypes.string,
     onDateSelected: VueTypes.func.def(console.log)
   },
   computed: {
@@ -46,7 +48,8 @@ export default {
       const daysOfMonthWithPlaceholders = generateDaysOfMonthWithPlaceholders(this.month)
       return daysOfMonthWithPlaceholders.map(day => ({
         unfocused: moment(day, DAY_FORMAT).format(MONTH_FORMAT) !== this.month,
-        date: moment(day, DAY_FORMAT).toDate()
+        date: moment(day, DAY_FORMAT).toDate(),
+        selected: day === this.selectedDate
       }))
     },
     weekDays () {
