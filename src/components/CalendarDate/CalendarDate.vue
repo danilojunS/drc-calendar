@@ -1,9 +1,10 @@
 <template>
   <div
-    :class="{
+    :class="[{
       'calendar-date': true,
-      'calendar-date--selected': selected
-    }"
+      'calendar-date--selected': selected,
+      'calendar-date--unfocused': unfocused
+    }, className]"
     :style="{
       width,
       height
@@ -11,7 +12,10 @@
     @click="onClick(date)"
   >
     <div class="container">
-      <div class="day">
+      <div :class="{
+        'day': true,
+        'day--selected': selected
+      }">
         {{ formatDate(date) }}
       </div>
       <div class="events">
@@ -44,7 +48,9 @@ export default {
       startsAt: Date,
       endsAt: Date,
     })),
-    selected: VueTypes.bool.def(false)
+    selected: VueTypes.bool.def(false),
+    unfocused: VueTypes.bool.def(false),
+    className: VueTypes.string
   },
   methods: {
     formatDate (date) {
@@ -61,9 +67,13 @@ export default {
 .calendar-date {
   border: 1px solid #e0e0e0;
   cursor: pointer;
+  display: inline-block;
 }
 .calendar-date--selected {
   border: 1px solid #42b983;
+}
+.calendar-date--unfocused {
+  background: #eee;
 }
 
 .container {
@@ -74,12 +84,25 @@ export default {
 
 .day {
   font-size: 1em;
-  padding: 10px;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+.day--selected {
+  color: #ffffff;
+  background: #42b983;
 }
 
 .events {
   position: absolute;
-  top: 40px;
+  top: 50px;
   bottom: 0;
   left: 0;
   right: 0;
