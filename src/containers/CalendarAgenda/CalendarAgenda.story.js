@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import { storiesOf } from '@storybook/vue'
-import { action } from '@storybook/addon-actions'
 
 import moment from 'moment'
 
-import Agenda from '.'
+import CalendarAgenda from '.'
 
-Vue.component('agenda', Agenda)
+Vue.component('calendar-agenda', CalendarAgenda)
 
 const events = [
   {
@@ -56,54 +55,31 @@ const events = [
   }
 ]
 
-storiesOf('Agenda|Agenda', module)
+storiesOf('CalendarAgenda|CalendarAgenda', module)
   .add('default', () => ({
     template: `
-      <agenda
+      <calendar-agenda
         :year="year"
-        :onDateSelected="onDateSelected"
       >
-      </agenda>
+      </calendar-agenda>
     `,
     data () {
       return {
-        year: '2018',
-        onDateSelected: action('onDateSelected')
+        year: '2018'
       }
     }
   }))
   .add('with events', () => ({
     template: `
-      <agenda
+      <calendar-agenda
         :year="year"
-        :onDateSelected="onDateSelected"
         :events="events"
       >
-      </agenda>
+      </calendar-agenda>
     `,
     data () {
       return {
         year: '2018',
-        onDateSelected: action('onDateSelected'),
-        events
-      }
-    }
-  }))
-  .add('selected', () => ({
-    template: `
-      <agenda
-        :year="year"
-        :onDateSelected="onDateSelected"
-        :selectedDay="selectedDay"
-        :events="events"
-      >
-      </agenda>
-    `,
-    data () {
-      return {
-        year: '2018',
-        onDateSelected: action('onDateSelected'),
-        selectedDay: '2018-01-09',
         events
       }
     }

@@ -3,12 +3,9 @@
     :class="[{
       'agenda': true
     }, className]"
-    :style="{
-      width
-    }"
   >
     <div class="title">
-      {{ year }}
+      Agenda {{ year }}
     </div>
     <div class="days">
       <agenda-date
@@ -16,6 +13,7 @@
         :key="index"
         :date="day.date"
         :events="day.events"
+        :selected="day.selected"
         :onClick="onDateSelected"
       />
     </div>
@@ -36,8 +34,8 @@ export default {
   name: 'Agenda',
   props: {
     year: VueTypes.string.isRequired,
+    selectedDay: VueTypes.string,
     onDateSelected: VueTypes.func.def(console.log),
-    width: VueTypes.string.def('100%'),
     events: VueTypes.arrayOf(VueTypes.shape({
       title: VueTypes.string.isRequired,
       startsAt: Date,
@@ -58,6 +56,7 @@ export default {
               event.startsAt &&
               moment(event.startsAt).format('YYYY-MM-DD') === day
           }),
+          selected: moment(day, 'YYYY-MM-DD').format('YYYY-MM-DD') === this.selectedDay
         }))
     }
   }
@@ -65,15 +64,15 @@ export default {
 </script>
 
 <style scoped>
-.agenda-date {
-  border: 1px solid #e0e0e0;
-  cursor: pointer;
-  display: inline-block;
+.agenda {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
 }
 .title {
   font-size: 50px;
   text-align: right;
-  padding: 20px;
+  padding: 22px;
   color: #42b983;
 }
 </style>

@@ -67,3 +67,21 @@ storiesOf('Agenda|AgendaDate', module)
       }
     }
   }))
+  .add('selected', () => ({
+    template: `
+      <agenda-date
+        :date="date"
+        :onClick="onClick"
+        :events="events"
+        selected
+      >
+      </agenda-date>
+    `,
+    data () {
+      return {
+        date: date7,
+        onClick: action('onClick'),
+        events
+      }
+    }
+  }))
