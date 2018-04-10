@@ -1,7 +1,8 @@
 <template>
   <div
     :class="[{
-      'agenda-date': true
+      'agenda-date': true,
+      'agenda-date--selected': selected
     }, className]"
     :style="{
       width
@@ -39,7 +40,8 @@ export default {
       startsAt: Date,
       endsAt: Date,
     })).def([]),
-    className: VueTypes.string
+    className: VueTypes.string,
+    selected: VueTypes.bool.def(false)
   },
   methods: {
     formatDate (date) {
@@ -58,6 +60,8 @@ export default {
   cursor: pointer;
   display: inline-block;
 }
+
+.agenda-date--selected,
 .agenda-date:hover {
   border-color: #42b983;
 }
@@ -67,6 +71,7 @@ export default {
   font-size: 20px;
   padding: 8px;
 }
+.agenda-date--selected .title,
 .agenda-date:hover .title {
   background: #42b983;
   color: #ffffff;

@@ -13,6 +13,7 @@
         :key="index"
         :date="day.date"
         :events="day.events"
+        :selected="day.selected"
         :onClick="onDateSelected"
       />
     </div>
@@ -33,6 +34,7 @@ export default {
   name: 'Agenda',
   props: {
     year: VueTypes.string.isRequired,
+    selectedDay: VueTypes.string,
     onDateSelected: VueTypes.func.def(console.log),
     events: VueTypes.arrayOf(VueTypes.shape({
       title: VueTypes.string.isRequired,
@@ -54,6 +56,7 @@ export default {
               event.startsAt &&
               moment(event.startsAt).format('YYYY-MM-DD') === day
           }),
+          selected: moment(day, 'YYYY-MM-DD').format('YYYY-MM-DD') === this.selectedDay
         }))
     }
   }

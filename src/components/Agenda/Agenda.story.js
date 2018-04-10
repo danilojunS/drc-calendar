@@ -89,3 +89,22 @@ storiesOf('Agenda|Agenda', module)
       }
     }
   }))
+  .add('selected', () => ({
+    template: `
+      <agenda
+        :year="year"
+        :onDateSelected="onDateSelected"
+        :selectedDay="selectedDay"
+        :events="events"
+      >
+      </agenda>
+    `,
+    data () {
+      return {
+        year: '2018',
+        onDateSelected: action('onDateSelected'),
+        selectedDay: '2018-01-09',
+        events
+      }
+    }
+  }))

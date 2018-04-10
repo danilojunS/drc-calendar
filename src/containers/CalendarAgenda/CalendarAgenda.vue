@@ -15,6 +15,7 @@
     />
     <agenda
       :year="year"
+      :selectedDay="selectedDay"
       :onDateSelected="onDateSelected"
       :events="events"
       className="agenda"
