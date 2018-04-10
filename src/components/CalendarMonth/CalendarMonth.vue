@@ -39,7 +39,7 @@ import generateDaysOfMonthWithPlaceholders from './utils/generate-days-of-month-
 import generateWeekDays from './utils/generate-week-days'
 
 export default {
-  name: 'CalendarDate',
+  name: 'CalendarMonth',
   props: {
     month: VueTypes.string.isRequired,
     selectedDate: VueTypes.string,
