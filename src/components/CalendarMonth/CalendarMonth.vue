@@ -42,7 +42,7 @@ export default {
   name: 'CalendarMonth',
   props: {
     month: VueTypes.string.isRequired,
-    selectedDate: VueTypes.string,
+    selectedDay: VueTypes.string,
     onDateSelected: VueTypes.func.def(console.log),
     events: VueTypes.arrayOf(VueTypes.shape({
       title: VueTypes.string.isRequired,
@@ -59,7 +59,7 @@ export default {
         events: filter(this.events, event => {
           return event && event.startsAt && moment(event.startsAt).format(DAY_FORMAT) === day
         }),
-        selected: day === this.selectedDate
+        selected: day === this.selectedDay
       }))
     },
     weekDays () {
