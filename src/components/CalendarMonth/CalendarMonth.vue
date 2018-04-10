@@ -16,6 +16,7 @@
         :key="index"
         width="calc(100% / 7 - 2px)"
         :date="day.date"
+        :events="day.events"
         :unfocused="day.unfocused"
         :selected="day.selected"
         :onClick="onDateSelected"
@@ -25,6 +26,7 @@
 </template>
 
 <script>
+import { filter } from 'lodash'
 import moment from 'moment'
 
 import Vue from 'vue'
@@ -41,7 +43,12 @@ export default {
   props: {
     month: VueTypes.string.isRequired,
     selectedDate: VueTypes.string,
-    onDateSelected: VueTypes.func.def(console.log)
+    onDateSelected: VueTypes.func.def(console.log),
+    events: VueTypes.arrayOf(VueTypes.shape({
+      title: VueTypes.string.isRequired,
+      startsAt: Date,
+      endsAt: Date,
+    })),
   },
   computed: {
     days () {
@@ -49,6 +56,9 @@ export default {
       return daysOfMonthWithPlaceholders.map(day => ({
         unfocused: moment(day, DAY_FORMAT).format(MONTH_FORMAT) !== this.month,
         date: moment(day, DAY_FORMAT).toDate(),
+        events: filter(this.events, event => {
+          return event && event.startsAt && moment(event.startsAt).format(DAY_FORMAT) === day
+        }),
         selected: day === this.selectedDate
       }))
     },
