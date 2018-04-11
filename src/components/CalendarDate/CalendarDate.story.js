@@ -41,7 +41,7 @@ const tooManyEvents = times(10).map(time => ({
   startsAt: moment(`2018-04-07 ${time + 10}:30`).toDate()
 }))
 
-storiesOf('Calendar|CalendarDate', module)
+storiesOf('Components|CalendarDate', module)
   .add('default', () => ({
     template: `
       <calendar-date

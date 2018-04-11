@@ -23,8 +23,7 @@
 </template>
 
 <script>
-import { filter, first, indexOf, size } from 'lodash'
-import moment from 'moment'
+import { indexOf, size } from 'lodash'
 
 import VueTypes from 'vue-types'
 
@@ -43,7 +42,7 @@ export default {
     events: VueTypes.arrayOf(VueTypes.shape({
       title: VueTypes.string.isRequired,
       startsAt: Date,
-      endsAt: Date,
+      endsAt: Date
     })),
     className: VueTypes.string
   },

@@ -46,7 +46,7 @@ export default {
     events: VueTypes.arrayOf(VueTypes.shape({
       title: VueTypes.string.isRequired,
       startsAt: Date,
-      endsAt: Date,
+      endsAt: Date
     })).def([]),
     selected: VueTypes.bool.def(false),
     unfocused: VueTypes.bool.def(false),
@@ -57,7 +57,7 @@ export default {
       return date && moment(date).format('DD')
     },
     formatStartTime (startsAt) {
-      return startsAt && moment(startsAt).format('HH:mm') || ''
+      return startsAt ? moment(startsAt).format('HH:mm') : ''
     }
   }
 }

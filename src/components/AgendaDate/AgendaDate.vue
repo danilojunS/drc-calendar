@@ -38,7 +38,7 @@ export default {
     events: VueTypes.arrayOf(VueTypes.shape({
       title: VueTypes.string.isRequired,
       startsAt: Date,
-      endsAt: Date,
+      endsAt: Date
     })).def([]),
     className: VueTypes.string,
     selected: VueTypes.bool.def(false)
@@ -48,7 +48,7 @@ export default {
       return moment(date).format('ddd, MMM Do')
     },
     formatStartTime (startsAt) {
-      return startsAt && moment(startsAt).format('HH:mm') || ''
+      return startsAt ? moment(startsAt).format('HH:mm') : ''
     }
   }
 }

@@ -34,7 +34,7 @@ const events = [
 
 const date7 = moment('2018-04-07').toDate()
 
-storiesOf('Agenda|AgendaDate', module)
+storiesOf('Components|AgendaDate', module)
   .add('default', () => ({
     template: `
       <agenda-date

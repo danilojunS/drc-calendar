@@ -56,7 +56,7 @@ const events = [
   }
 ]
 
-storiesOf('Agenda|Agenda', module)
+storiesOf('Components|Agenda', module)
   .add('default', () => ({
     template: `
       <agenda

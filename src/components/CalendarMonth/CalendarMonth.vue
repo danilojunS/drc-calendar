@@ -29,7 +29,6 @@
 import { filter } from 'lodash'
 import moment from 'moment'
 
-import Vue from 'vue'
 import VueTypes from 'vue-types'
 
 import CalendarDate from '../CalendarDate'
@@ -47,8 +46,8 @@ export default {
     events: VueTypes.arrayOf(VueTypes.shape({
       title: VueTypes.string.isRequired,
       startsAt: Date,
-      endsAt: Date,
-    })),
+      endsAt: Date
+    }))
   },
   computed: {
     days () {

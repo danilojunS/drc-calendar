@@ -39,7 +39,7 @@ export default {
     events: VueTypes.arrayOf(VueTypes.shape({
       title: VueTypes.string.isRequired,
       startsAt: Date,
-      endsAt: Date,
+      endsAt: Date
     })),
     className: VueTypes.string
   },
