@@ -69,17 +69,27 @@ export default {
         }))
     }
   },
-  watch: {
-    selectedDay (newSelectedDay, oldSelectedDay) {
-      const selectedDayIndex = Number(moment(newSelectedDay).format('DDD')) - 1
+  methods: {
+    scrollToSelectedDay (selectedDay, behavior = 'smooth', block = 'nearest') {
+      if (!selectedDay) return
+
+      const selectedDayIndex = Number(moment(selectedDay).format('DDD')) - 1
       const dayToScroll = this.$refs.days.children[selectedDayIndex]
       dayToScroll.scrollIntoView({
-        block: 'nearest',
-        behavior: 'smooth'
+        block,
+        behavior
       })
     }
   },
+  watch: {
+    selectedDay (newSelectedDay) {
+      this.scrollToSelectedDay(newSelectedDay)
+    }
+  },
   mounted () {
+    // automatically scroll to selectedDay
+    this.scrollToSelectedDay(this.selectedDay, 'instant', 'start')
+
     // adapted from https://gist.github.com/jjmu15/8646226
     const isInViewportVertical = element => {
       const rect = element.getBoundingClientRect()
