@@ -70,7 +70,7 @@ export default {
     }
   },
   methods: {
-    scrollToSelectedDay (selectedDay, behavior = 'smooth', block = 'nearest') {
+    scrollToSelectedDay (selectedDay, behavior = 'instant', block = 'nearest') {
       if (!selectedDay) return
 
       const selectedDayIndex = Number(moment(selectedDay).format('DDD')) - 1
