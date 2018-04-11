@@ -3,6 +3,7 @@
     :class="[{
       'agenda': true
     }, className]"
+    ref="agenda"
   >
     <div class="title">
       Agenda {{ year }}
@@ -21,7 +22,13 @@
 </template>
 
 <script>
-import { filter } from 'lodash'
+import {
+  filter,
+  countBy,
+  map,
+  sortBy,
+  first
+} from 'lodash'
 import moment from 'moment'
 
 import VueTypes from 'vue-types'
@@ -36,6 +43,8 @@ export default {
     year: VueTypes.string.isRequired,
     selectedDay: VueTypes.string,
     onDateSelected: VueTypes.func.def(console.log),
+    selectedMonth: VueTypes.string,
+    selectMonth: VueTypes.func.def(console.log),
     events: VueTypes.arrayOf(VueTypes.shape({
       title: VueTypes.string.isRequired,
       startsAt: Date,
@@ -68,6 +77,45 @@ export default {
         block: 'nearest',
         behavior: 'smooth'
       })
+    }
+  },
+  mounted () {
+    // adapted from https://gist.github.com/jjmu15/8646226
+    const isInViewportVertical = element => {
+      const rect = element.getBoundingClientRect()
+      const html = document.documentElement
+      return (
+        rect.top >= 0 &&
+        rect.bottom <= (window.innerHeight || html.clientHeight)
+      )
+    }
+
+    // automatically select month based on agenda position
+    this.$refs.agenda.onscroll = () => {
+      const visibleDays = Array.from(this.$refs.days.children).filter(day => {
+        return isInViewportVertical(day)
+      })
+      const months = visibleDays.map(day => {
+        const title = day.querySelector('.title').textContent || '' // Mon, Jan 1st
+        return title.trim().split(' ')[1] // Jan
+      })
+      const countMonths = countBy(months) // { Jan: 1, Feb: 6 }
+      const countMonthsSorted = sortBy(
+        map(countMonths, (occurences, month) => ({
+          occurences,
+          month
+        })),
+        month => month.occurences
+      )
+        .reverse()
+
+      const monthToSelect = moment()
+        .month(first(countMonthsSorted).month)
+        .format('YYYY-MM')
+
+      if (monthToSelect !== this.selectedMonth) {
+        this.selectMonth(monthToSelect)
+      }
     }
   }
 }
