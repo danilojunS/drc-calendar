@@ -19,7 +19,7 @@ module.exports = {
   mapCoverage: true,
   coverageDirectory: '<rootDir>/test/unit/coverage',
   collectCoverageFrom: [
-    'src/**/*.{js,vue}',
+    'src/**/*.{js}',
     '!src/main.js',
     '!src/router/index.js',
     '!src/**/*.story.js',
