@@ -81,6 +81,11 @@ export default {
   overflow-y: auto;
 }
 
+.months {
+  width: 100%;
+  height: 100%;
+}
+
 .controls {
   position: relative;
 }

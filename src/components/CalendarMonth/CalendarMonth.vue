@@ -15,6 +15,7 @@
         v-for="(day, index) in days"
         :key="index"
         width="calc(100% / 7 - 2px)"
+        height="calc(100% / 5)"
         :date="day.date"
         :events="day.events"
         :unfocused="day.unfocused"
@@ -77,14 +78,23 @@ export default {
 </script>
 
 <style scoped>
+.calendar-month {
+  width: 100%;
+  height: 100%;
+}
+
 .title {
+  height: 75px;
   font-size: 30px;
   text-align: center;
-  padding: 20px;
   color: #42b983;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .week-days {
+  height: 25px;
   width: 100%;
 }
 .week-day {
@@ -95,6 +105,7 @@ export default {
 }
 
 .days {
+  height: calc(100% - 110px);
   width: 100%;
 }
 </style>
