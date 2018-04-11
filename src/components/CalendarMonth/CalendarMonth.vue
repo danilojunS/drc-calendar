@@ -17,7 +17,7 @@
         width="calc(100% / 7 - 2px)"
         height="calc(100% / 5)"
         :date="day.date"
-        :events="day.events"
+        :events="filterDayEvents(day.events, day.date)"
         :unfocused="day.unfocused"
         :selected="day.selected"
         :onClick="onDateSelected"
@@ -72,6 +72,11 @@ export default {
   methods: {
     formatMonth (month) {
       return moment(month, MONTH_FORMAT).format('MMMM YYYY')
+    },
+    filterDayEvents (events, date) {
+      return filter(events, event => {
+        return moment(event.startsAt).format('YYYY-MM-DD') === moment(date).format('YYYY-MM-DD')
+      })
     }
   }
 }

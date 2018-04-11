@@ -16,14 +16,15 @@
         :month="month"
         :onDateSelected="onDateSelected"
         :selectedDay="selectedDay"
-        :events="events"
+        :events="filterMonthEvents(events, month)"
       />
     </div>
   </div>
 </template>
 
 <script>
-import { indexOf, size } from 'lodash'
+import { indexOf, size, filter } from 'lodash'
+import moment from 'moment'
 
 import VueTypes from 'vue-types'
 
@@ -64,6 +65,11 @@ export default {
     },
     nextMonth () {
       this.selectMonth(this.months[indexOf(this.months, this.selectedMonth) + 1])
+    },
+    filterMonthEvents (events, month) {
+      return filter(events, event => {
+        return moment(event.startsAt).format('YYYY-MM') === month
+      })
     }
   },
   computed: {
