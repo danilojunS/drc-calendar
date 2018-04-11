@@ -28,6 +28,9 @@
           </label>
         </div>
       </div>
+      <div class="events-count" v-if="events.length > 0">
+        {{ events.length }}
+      </div>
     </div>
   </div>
 </template>
@@ -114,7 +117,29 @@ export default {
   padding: 4px 10px;
 }
 
+.events-count {
+  display: none;
+}
+
 .start-time {
   font-weight: bold;
+}
+
+@media all and (max-width: 900px) {
+  .events {
+    display: none;
+  }
+  .events-count {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #42b983;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 50px;
+  }
 }
 </style>

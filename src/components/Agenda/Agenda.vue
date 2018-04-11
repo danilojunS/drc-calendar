@@ -70,9 +70,13 @@ export default {
   overflow-y: auto;
 }
 .title {
-  font-size: 50px;
+  font-size: 3vw;
   text-align: right;
-  padding: 22px;
   color: #42b983;
+  height: 100px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 38px;
 }
 </style>
