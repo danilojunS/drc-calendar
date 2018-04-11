@@ -55,7 +55,7 @@ const events = [
   }
 ]
 
-storiesOf('CalendarAgenda|CalendarAgenda', module)
+storiesOf('Containers|CalendarAgenda', module)
   .add('default', () => ({
     template: `
       <calendar-agenda

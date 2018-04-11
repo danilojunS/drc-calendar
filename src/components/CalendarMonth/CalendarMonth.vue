@@ -15,8 +15,9 @@
         v-for="(day, index) in days"
         :key="index"
         width="calc(100% / 7 - 2px)"
+        height="calc(100% / 5)"
         :date="day.date"
-        :events="day.events"
+        :events="filterDayEvents(day.events, day.date)"
         :unfocused="day.unfocused"
         :selected="day.selected"
         :onClick="onDateSelected"
@@ -29,7 +30,6 @@
 import { filter } from 'lodash'
 import moment from 'moment'
 
-import Vue from 'vue'
 import VueTypes from 'vue-types'
 
 import CalendarDate from '../CalendarDate'
@@ -47,8 +47,8 @@ export default {
     events: VueTypes.arrayOf(VueTypes.shape({
       title: VueTypes.string.isRequired,
       startsAt: Date,
-      endsAt: Date,
-    })),
+      endsAt: Date
+    }))
   },
   computed: {
     days () {
@@ -72,20 +72,34 @@ export default {
   methods: {
     formatMonth (month) {
       return moment(month, MONTH_FORMAT).format('MMMM YYYY')
+    },
+    filterDayEvents (events, date) {
+      return filter(events, event => {
+        return moment(event.startsAt).format('YYYY-MM-DD') === moment(date).format('YYYY-MM-DD')
+      })
     }
   }
 }
 </script>
 
 <style scoped>
+.calendar-month {
+  width: 100%;
+  height: 100%;
+}
+
 .title {
+  height: 75px;
   font-size: 30px;
   text-align: center;
-  padding: 20px;
   color: #42b983;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .week-days {
+  height: 25px;
   width: 100%;
 }
 .week-day {
@@ -96,6 +110,7 @@ export default {
 }
 
 .days {
+  height: calc(100% - 110px);
   width: 100%;
 }
 </style>

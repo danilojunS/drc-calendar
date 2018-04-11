@@ -38,7 +38,7 @@ export default {
     events: VueTypes.arrayOf(VueTypes.shape({
       title: VueTypes.string.isRequired,
       startsAt: Date,
-      endsAt: Date,
+      endsAt: Date
     })),
     className: VueTypes.string
   },
@@ -78,9 +78,17 @@ export default {
 
 .calendar-agenda .calendar {
   width: 70%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
 }
 
 .calendar-agenda .agenda {
   width: 30%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
 </style>

@@ -56,7 +56,7 @@ const events = [
   }
 ]
 
-storiesOf('Calendar|CalendarMonth', module)
+storiesOf('Components|CalendarMonth', module)
   .add('default', () => ({
     template: `
       <calendar-month

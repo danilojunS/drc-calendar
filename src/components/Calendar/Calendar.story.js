@@ -56,7 +56,7 @@ const events = [
   }
 ]
 
-storiesOf('Calendar|Calendar', module)
+storiesOf('Components|Calendar', module)
   .add('with next', () => ({
     template: `
       <calendar
