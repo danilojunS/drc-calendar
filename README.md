@@ -14,7 +14,7 @@ It has the following features:
 
 * At the top of the calendar, the weekdays are displayed starting by Sunday.
 * In the calendar, one can view the events that are going to happen in each date.
-* It is possible to navigate in the months of the year, using arrows in the top of the calendar.
+* It is possible to navigate in the months of the year, using arrows at the top of the calendar.
 * When selecting a date in the calendar, the date is highlighted and the agenda scrolls to the selected date.
 * The agenda displays all days of the year.
 * In each event in the agenda, the following information should be shown: start time, duration and title.
@@ -23,7 +23,7 @@ It has the following features:
 
 This app is my first try on [Vue.js](https://vuejs.org/)!
 
-While trying to use as many concepts I learnt from [React](https://reactjs.org/), I might have not followed the "vue way" for doing things (Vue community, sorry for that 😓).
+While trying to use many concepts I learnt from [React](https://reactjs.org/), I might have not followed the "vue way" for doing things (Vue community, sorry for that 😓).
 
 On the plus side, this challenge was really interesting and rewarding. Also, I am getting more and more interested in the Vue.js ecossystem.
 
@@ -60,8 +60,8 @@ First, I generated the boilerplate of the project using `vue-cli` (awesome tool,
 
 Then, I organized the app in two kinds of components:
 
-1. (Presentational) components: they basically receive some `props` and render stuff. They do not handle behaviour and usually do not have internal state (although they can).
-1. Containers: components that handle behaviour and logic. They have internal state and use it to control its components.
+1. (Presentational) components: they basically receive some `props` and render stuff. They do not handle behaviour and usually do not have internal state (although they can - for UI for example).
+1. Containers: components that handle behaviour and logic. They have internal state and use it to control their internal components.
 
 Not surprinsingly, this concept [came from React](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0). 🤙
 
@@ -75,8 +75,11 @@ I enjoyed building this Calendar and Agenda, as I could learn new things and fin
 
 Some things that could be done:
 
-- [ ] fetch data from a server
-- [ ] implement Create/Update/Delete of events
-- [ ] create more tests for the `*.vue` files
+- [ ] **(improvement)** create more tests for the `*.vue` files
+- [ ] **(improvement)** create end to end tests (user interacting with page)
+- [ ] **(improvement)** use css preprocessor to avoid duplication of css properties and values
+- [ ] **(improvement)** better layout and iterations for mobile
+- [ ] **(feature)** fetch data from a server
+- [ ] **(feature)** implement Create/Update/Delete of events
 
 Finally, feel free to open up an issue/PR if you feel like discussing anything of what I have done here! 👊
