@@ -7,7 +7,7 @@
     <div class="title">
       Agenda {{ year }}
     </div>
-    <div class="days">
+    <div class="days" ref="days">
       <agenda-date
         v-for="(day, index) in days"
         :key="index"
@@ -58,6 +58,16 @@ export default {
           }),
           selected: moment(day, 'YYYY-MM-DD').format('YYYY-MM-DD') === this.selectedDay
         }))
+    }
+  },
+  watch: {
+    selectedDay (newSelectedDay, oldSelectedDay) {
+      const selectedDayIndex = Number(moment(newSelectedDay).format('DDD')) - 1
+      const dayToScroll = this.$refs.days.children[selectedDayIndex]
+      dayToScroll.scrollIntoView({
+        block: 'nearest',
+        behavior: 'smooth'
+      })
     }
   }
 }

@@ -4,7 +4,7 @@ import moment from 'moment'
 
 const DATE_FORMAT = 'YYYY-MM-DD'
 
-const verbs = ['Get', 'Eet', 'Eat', 'Drink', 'Sleep', 'Watch']
+const verbs = ['Get', 'Take', 'Eat', 'Drink', 'Sleep', 'Watch']
 const adverbs = ['slowly', 'quickly', 'faster', 'nicely', 'perfectly']
 const nouns = ['fish', 'grass', 'books', 'banana', 'clock', 'car', 'dvd']
 
