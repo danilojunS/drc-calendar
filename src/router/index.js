@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 import moment from 'moment'
 
-import HelloWorld from '../containers/HelloWorld'
+import Welcome from '../containers/Welcome'
 import CalendarAgenda from '../containers/CalendarAgenda'
 
 Vue.use(Router)
@@ -11,9 +11,9 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/hello-world',
-      name: 'HelloWorld',
-      component: HelloWorld
+      path: '/',
+      name: 'Welcome',
+      component: Welcome
     },
     {
       path: '/calendar',
