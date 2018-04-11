@@ -4,6 +4,8 @@
 
 ![drc-calendar](screenshot.png)
 
+[Live version](https://drc-calendar.surge.sh)
+
 # Introduction
 
 This app is a calendar with a built-in agenda, which shows dinamically generated events in the current year.
