@@ -29,10 +29,11 @@ const generateMockEvents = (year, numberOfEvents = 100) => {
   const lastDayOfYear = moment(`${year}-12-31`, DATE_FORMAT).toDate()
 
   return sortBy(times(numberOfEvents).map(time => {
+    const startsAt = randomDate(firstDayOfYear, lastDayOfYear)
     return {
       title: randomTitle(),
-      startsAt: randomDate(firstDayOfYear, lastDayOfYear),
-      endsAt: randomDate(firstDayOfYear, lastDayOfYear)
+      startsAt,
+      endsAt: moment(startsAt).add(Math.random() * 24 * 60, 'minutes').toDate()
     }
   }), event => event.startsAt.getTime())
 }
