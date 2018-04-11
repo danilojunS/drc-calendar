@@ -6,6 +6,8 @@ import moment from 'moment'
 import Welcome from '../containers/Welcome'
 import CalendarAgenda from '../containers/CalendarAgenda'
 
+import generateMockEvents from '../utils/generate-mock-events'
+
 Vue.use(Router)
 
 export default new Router({
@@ -21,7 +23,7 @@ export default new Router({
       component: CalendarAgenda,
       props: {
         year: moment().format('YYYY'),
-        events: []
+        events: generateMockEvents('2018', 150)
       }
     }
   ]
