@@ -17,6 +17,9 @@
         <label class="start-time" v-if="event.startsAt">
           {{ formatStartTime(event.startsAt) }}
         </label>
+        <label class="duration" v-if="event.startsAt && event.endsAt">
+          ({{ formatDuration(event.startsAt, event.endsAt) }})
+        </label>
         <label class="event-title">
           {{ event.title }}
         </label>
@@ -49,6 +52,10 @@ export default {
     },
     formatStartTime (startsAt) {
       return startsAt ? moment(startsAt).format('HH:mm') : ''
+    },
+    formatDuration (startsAt, endsAt) {
+      const diff = moment(endsAt).diff(moment(startsAt))
+      return moment.duration(diff).humanize()
     }
   }
 }
@@ -88,12 +95,17 @@ export default {
 }
 
 .event:hover .start-time,
-.event:hover .event-title {
+.event:hover .event-title,
+.event:hover .duration {
   color: #42b983;
   cursor: pointer;
 }
 
 .start-time {
   font-weight: bold;
+}
+
+.duration {
+  font-style: italic;
 }
 </style>
