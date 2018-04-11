@@ -10,7 +10,7 @@
     </div>
     <div class="months">
       <calendar-month
-        v-show="isMonthSelected(month)"
+        v-if="isMonthSelected(month)"
         v-for="(month, index) in months"
         :key="index"
         :month="month"
